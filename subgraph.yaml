@@ -1,0 +1,26 @@
+specVersion: 0.0.1
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: VendingMachine
+    network: rinkeby
+    source:
+      address: "0xdF964DbcAeCBc77daE22A97e6A0dFbCe6d78246e"
+      abi: VendingMachine
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.5
+      language: wasm/assemblyscript
+      entities:
+        - Purchase
+        - Refill
+      abis:
+        - name: VendingMachine
+          file: ./abis/VendingMachine.json
+      eventHandlers:
+        - event: Purchase(address,uint256,uint256,uint256,uint256)
+          handler: handlePurchase
+        - event: Refill(address,uint256,uint256,uint256,uint256)
+          handler: handleRefill
+      file: ./src/mapping.ts
