@@ -1,6 +1,6 @@
 specVersion: 0.0.2
 schema:
-  file: ./schema.graphql
+  file: schema.graphql
 dataSources:
   - kind: ethereum
     name: VendingMachine
@@ -17,10 +17,10 @@ dataSources:
         - Refill
       abis:
         - name: VendingMachine
-          file: ./abis/VendingMachine.json
+          file: VendingMachine/abis/VendingMachine.json
       eventHandlers:
         - event: Purchase(address,uint256,uint256,uint256,uint256)
           handler: handlePurchase
         - event: Refill(address,uint256,uint256,uint256,uint256)
           handler: handleRefill
-      file: ./src/mapping.ts
+      file: VendingMachine/VendingMachine.wasm
